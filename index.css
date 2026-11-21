@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html, body, #root { height: 100%; }
+
+body {
+  @apply bg-ink-950 text-slate-200 font-sans antialiased;
+  background-image:
+    radial-gradient(900px 520px at 12% -8%, rgba(56,189,248,0.10), transparent 60%),
+    radial-gradient(760px 480px at 88% 0%, rgba(139,92,246,0.10), transparent 62%);
+  background-attachment: fixed;
+}
+
+* { scrollbar-width: thin; scrollbar-color: #1e2a3d transparent; }
+::-webkit-scrollbar { width: 9px; height: 9px; }
+::-webkit-scrollbar-thumb { background: #1e2a3d; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #2a3a52; }
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-line bg-ink-800/80 shadow-card backdrop-blur-sm;
+  }
+  .card-pad { @apply p-5; }
+  .card-head { @apply flex items-start justify-between gap-3 border-b border-line/70 px-5 py-3.5; }
+  .card-title { @apply text-[13px] font-semibold tracking-wide text-slate-100; }
+  .card-sub { @apply text-[11.5px] text-slate-500; }
+
+  .label { @apply text-[10.5px] font-semibold uppercase tracking-[0.14em] text-slate-500; }
+  .kpi { @apply font-sans text-[26px] font-semibold leading-none tracking-tight text-white; }
+  .mono { @apply font-mono text-[11.5px]; }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-lg border border-line bg-ink-700 px-3 py-1.5
+           text-[12px] font-medium text-slate-300 transition-colors hover:border-sky/40 hover:text-white
+           disabled:cursor-not-allowed disabled:opacity-40;
+  }
+  .btn-primary {
+    @apply border-sky/40 bg-sky/15 text-sky hover:bg-sky/25 hover:text-white;
+  }
+  .btn-ghost { @apply border-transparent bg-transparent hover:bg-white/5; }
+  .btn-xs { @apply px-2 py-1 text-[11px]; }
+
+  .input {
+    @apply w-full rounded-lg border border-line bg-ink-900 px-3 py-2 text-[12.5px] text-slate-200
+           placeholder:text-slate-600 focus:border-sky/50 focus:outline-none focus:ring-1 focus:ring-sky/30;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-md border border-line bg-ink-700/70 px-2 py-0.5
+           text-[10.5px] font-medium tracking-wide text-slate-400;
+  }
+  .row-hover { @apply transition-colors hover:bg-white/[0.025]; }
+  .divider { @apply h-px w-full bg-line/70; }
+
+  .grid-bg {
+    background-image: linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px);
+    background-size: 34px 34px;
+  }
+  .link { @apply text-sky hover:text-white transition-colors; }
+}
+
+.recharts-cartesian-axis-tick text { fill: #64748b; font-size: 10px; }
+.recharts-default-tooltip { background: #0b1220 !important; }
+.recharts-tooltip-wrapper { outline: none; }
